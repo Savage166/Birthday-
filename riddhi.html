@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 18th Birthday Riddhi! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rose-gold: #b76e79;
+            --soft-pink: #ffd1dc;
+            --deep-pink: #ff6b81;
+            --glass: rgba(255, 255, 255, 0.7);
+            --white: #ffffff;
+            --text: #4a4a4a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffe6eb 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- Entrance Overlay --- */
+        #entrance {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--soft-pink);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+            transition: opacity 1s ease;
+        }
+
+        .enter-btn {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background: var(--rose-gold);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Dancing Script', cursive;
+            box-shadow: 0 0 20px rgba(183, 110, 121, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        /* --- Main Layout --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            opacity: 0; /* Hidden initially */
+            transition: opacity 1s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1, h2 { font-family: 'Dancing Script', cursive; color: var(--rose-gold); }
+        h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        h2 { font-size: 2.8rem; margin-bottom: 30px; }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .typewriter {
+            font-size: 1.3rem;
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+            font-weight: 600;
+            min-height: 30px;
+        }
+
+        /* --- CENTER IMAGE --- */
+        .center-photo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+        }
+
+        .center-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 25px rgba(255, 107, 129, 0.6);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .crown-icon {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-10deg);
+            font-size: 3rem;
+            color: gold;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+            animation: float 4s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        /* --- COUNTDOWN TIMER --- */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(183, 110, 121, 0.2);
+            min-width: 80px;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .time-val {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--rose-gold);
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text);
+        }
+
+        /* --- PHOTOS & EFFECTS --- */
+        .section-title { margin: 60px 0 30px; position: relative; display: inline-block; }
+        .section-title::after { content: '✨'; position: absolute; right: -30px; top: 0; }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+            padding: 10px;
+        }
+
+        .memory-card {
+            background: white;
+            padding: 15px 15px 50px 15px; /* Polaroid style bottom padding */
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            transform: rotate(-2deg);
+        }
+
+        .memory-card:nth-child(even) { transform: rotate(2deg); }
+
+        .memory-card:hover {
+            transform: scale(1.05) rotate(0deg);
+            box-shadow: 0 15px 40px rgba(255, 107, 129, 0.3);
+            z-index: 10;
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #eee;
+        }
+
+        .memory-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        /* --- LETTER --- */
+        .letter-section {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(183, 110, 121, 0.2);
+            border: 2px solid white;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            border: 2px solid var(--soft-pink);
+            border-radius: 10px;
+            outline: none;
+            text-align: center;
+            font-size: 1.1rem;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .unlock-btn {
+            background: var(--deep-pink);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .unlock-btn:hover { transform: scale(1.1); }
+
+        #secret-content {
+            display: none;
+            text-align: left;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* --- Audio Control --- */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 100;
+            color: var(--rose-gold);
+            animation: spin 4s linear infinite;
+        }
+        .music-control.paused { animation: none; }
+
+        /* --- BACKGROUND BALLOONS --- */
+        .balloon-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 30px;
+            height: 25px;
+            background: rgba(255, 107, 129, 0.4);
+            border-radius: 50% 50% 0 50%;
+            transform: rotate(45deg);
+            animation: floatUp linear infinite;
+        }
+        
+        .balloon::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 107, 129, 0.4);
+            border-radius: 50%;
+        }
+
+        .balloon::after {
+            content: "";
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 2px;
+            height: 40px;
+            background: rgba(255, 107, 129, 0.3);
+            transform: rotate(-45deg);
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(45deg); opacity: 0; }
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    </style>
+</head>
+<body>
+
+    <div class="balloon-container" id="balloon-container"></div>
+    <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:99;"></canvas>
+
+    <div id="entrance">
+        <button class="enter-btn" onclick="startCelebration()">Click to Open Surprise 🎁</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="Tu Jaane Na(KoshalWorld.Com).mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-control paused" id="musicBtn" onclick="toggleMusic()">
+        <i class="fas fa-music" id="musicIcon"></i>
+    </div>
+
+    <div class="container" id="mainContent">
+        
+        <div class="hero-section">
+            <h1 id="headline">Happy Birthday Riddhi!</h1>
+            <div class="typewriter" id="typewriter-text"></div>
+            
+            <div class="center-photo-container">
+                <i class="fas fa-crown crown-icon"></i>
+                <img src="riddhi_main.jpg" alt="The Birthday Girl" class="center-img" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=60'">
+            </div>
+
+            <p style="font-size: 1.2rem; color: var(--rose-gold); margin-top:10px;">Countdown to Dec 24, 2025</p>
+            
+            <div id="countdown">
+                <div class="time-box"><span class="time-val" id="days">00</span><span class="time-label">Days</span></div>
+                <div class="time-box"><span class="time-val" id="hours">00</span><span class="time-label">Hours</span></div>
+                <div class="time-box"><span class="time-val" id="minutes">00</span><span class="time-label">Mins</span></div>
+                <div class="time-box"><span class="time-val" id="seconds">00</span><span class="time-label">Secs</span></div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Our Special Moments</h2>
+        <div class="memory-grid">
+            <div class="memory-card">
+                <img src="ff.jpg" alt="Gaming Together" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=60'">
+                <div class="memory-caption">Best Duo in Free Fire 🎮</div>
+            </div>
+            
+            <div class="memory-card">
+                <img src="spiderman.jpg" alt="Spiderman Art" onerror="this.src='https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=500&q=60'">
+                <div class="memory-caption">Artist 🕷️</div>
+            </div>
+
+            <div class="memory-card">
+                <img src="smile.jpg" alt="Video Call" onerror="this.src='https://images.unsplash.com/photo-1516054575922-f0b8eeadec1a?auto=format&fit=crop&w=500&q=60'">
+                <div class="memory-caption">That Smile 💜</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Memories Gallery</h2>
+        <div class="memory-grid">
+            <div class="memory-card"><img src="a1.jpg" alt="Memory" onerror="this.src='https://source.unsplash.com/random/500x500/?couple'"></div>
+            <div class="memory-card"><img src="a2.jpg" alt="Memory" onerror="this.src='https://source.unsplash.com/random/500x500/?love'"></div>
+            <div class="memory-card"><img src="a4.jpg" alt="Memory" onerror="this.src='https://source.unsplash.com/random/500x500/?love'"></div>
+            <div class="memory-card"><img src="a5.jpg" alt="Memory" onerror="this.src='https://source.unsplash.com/random/500x500/?love'"></div>
+            <div class="memory-card"><img src="a6.jpg" alt="Memory" onerror="this.src='https://source.unsplash.com/random/500x500/?love'"></div>
+            <div class="memory-card"><img src="a3.jpg" alt="Memory" onerror="this.src='https://source.unsplash.com/random/500x500/?girl'"></div>
+            <div class="memory-card"><img src="a7.jpg" alt="Memory" onerror="this.src='https://source.unsplash.com/random/500x500/?love'"></div>
+        </div>
+
+        <h2 class="section-title">A Secret Letter 💌</h2>
+        <div class="letter-section">
+            <div id="lock-screen">
+                <i class="fas fa-lock" style="font-size: 2rem; color: var(--rose-gold);"></i>
+                <p>Enter the secret password</p>
+                <input type="password" id="passwordInput" placeholder="Password">
+                <button class="unlock-btn" onclick="checkPassword()">Unlock ❤️</button>
+                <p id="error-msg" style="color:red; display:none; font-size: 0.9rem; margin-top:5px;">Wrong password!</p>
+            </div>
+
+            <div id="secret-content">
+                <h3 style="color: var(--rose-gold); font-family: 'Dancing Script'; font-size: 2rem; margin-bottom: 20px;">My Dearest Riddhi,</h3>
+                <p>Helooo Riddhuii,</p>
+                <p>Happy Birthday To you my Sweet Heart! It's been 2.7 years together and today also it feels like new fresh love. I hope you have seen my surprise but you will open this letter on your birthday only.</p>
+                <p>You are the most purest heart I ever met. </p>
+                <p style="text-align: right; margin-top: 30px; font-weight: bold;">- Yours Forever</p>
+            </div>
+        </div>
+        <br><br><br>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // --- 1. Music & Entrance ---
+        const audio = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        function startCelebration() {
+            document.getElementById('entrance').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('entrance').style.display = 'none';
+                document.getElementById('mainContent').style.opacity = '1';
+                triggerConfetti();
+                typeWriterEffect();
+                
+                // Audio Logic: Skip 5s, Delay 5s
+                audio.currentTime = 5;
+                setTimeout(() => {
+                    audio.play();
+                    isPlaying = true;
+                    document.getElementById('musicIcon').className = 'fas fa-pause';
+                    document.getElementById('musicBtn').classList.remove('paused');
+                }, 5000); 
+            }, 1000);
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                document.getElementById('musicIcon').className = 'fas fa-play';
+                document.getElementById('musicBtn').classList.add('paused');
+            } else {
+                audio.play();
+                document.getElementById('musicIcon').className = 'fas fa-pause';
+                document.getElementById('musicBtn').classList.remove('paused');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // --- 2. Countdown Timer (Dec 24, 2025) ---
+        const targetDate = new Date("Dec 24, 2025 00:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<h2>Happy Birthday!</h2>";
+            }
+        }, 1000);
+
+        // --- 3. Typewriter ---
+        const text = "Welcome to your special world, Princess...";
+        let i = 0;
+        function typeWriterEffect() {
+            if (i < text.length) {
+                document.getElementById("typewriter-text").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriterEffect, 100);
+            }
+        }
+
+        // --- 4. Password ---
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === "Ganuji") {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('secret-content').style.display = 'block';
+                triggerConfetti();
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        // --- 5. Background Balloons ---
+        function createBalloons() {
+            const container = document.getElementById('balloon-container');
+            const colors = ['rgba(255, 107, 129, 0.4)', 'rgba(255, 209, 220, 0.5)', 'rgba(183, 110, 121, 0.4)'];
+            
+            for(let i=0; i<20; i++) {
+                let balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.animationDuration = (Math.random() * 5 + 10) + 's'; // 10-15s float speed
+                balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(balloon);
+            }
+        }
+        createBalloons();
+
+        // --- 6. Confetti ---
+        function triggerConfetti() {
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+            (function frame() {
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
+        }
+    </script>
+</body>
+</html>
+
